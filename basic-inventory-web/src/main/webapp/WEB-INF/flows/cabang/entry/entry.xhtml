@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/layouts/standard.xhtml">
+	<ui:define name="content">				
+		<p:growl for="pesanInformasi" globalOnly="true" showDetail="true" />
+		<p:panel id="panel" columns="3" styleClass="entry" header="#{updateMode? 'Edit Cabang': 'Tambah Cabang'}">
+			<p:focus />
+			<h:panelGrid columns="3" cellpadding="5">
+			
+				<p:outputLabel for="id" value="Id:" rendered="#{updateMode}"/>
+				<p:inputText id="id" size="50" value="#{selectedEntity.id}" disabled="true" rendered="#{updateMode}"/>
+				<p:message for="id" display="text" rendered="#{updateMode}"/>
+															
+				<p:outputLabel for="nama" value="Nama:" />
+				<p:inputText id="nama" size="50" value="#{selectedEntity.nama}">
+					<p:clientValidator event="keyup" />
+				</p:inputText>
+				<p:message for="nama" display="text" />
+						
+			</h:panelGrid>
+			<div class="buttonPanel">
+				<p:commandButton id="simpan" value="Simpan" icon="fa fa-floppy-o" action="simpan" validateClient="true" rendered="#{!updateMode}" update="mainForm"/>
+				<p:commandButton id="update" value="Update" icon="fa fa-edit" action="update" validateClient="true" rendered="#{updateMode}" update="mainForm"/>					
+				<p:commandButton id="kembali" value="Kembali" icon="fa fa-arrow-left" action="kembali" immediate="true" />
+			</div>									
+		</p:panel>							
+	</ui:define>	
+</ui:composition>

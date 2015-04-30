@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/layouts/standard.xhtml">
+	<ui:define name="content">
+		<p:panel id="panelSupplier" header="Sales">
+			<p:dataTable var="vSales" value="#{entityList}" selection="#{entityList.selected}" selectionMode="single" rowKey="#{vSales.id}" 
+				paginator="true" rows="10" id="tabelSales" lazy="true" filterDelay="1000" resizableColumns="true">
+				<p:column headerText="Nama" sortBy="#{vSales.nama}" filterBy="#{vSales.nama}" filterMatchMode="contains">
+					<h:outputText value="#{vSales.nama}" />
+				</p:column>
+				<p:column headerText="Alamat" sortBy="#{vSales.alamat}" filterBy="#{vSales.alamat}" filterMatchMode="contains" width="500">
+					<h:outputText value="#{vSales.alamat}" />
+				</p:column>
+				<p:column headerText="Nomor Telepon" sortBy="#{vSales.nomorTelepon}" filterBy="#{vSales.nomorTelepon}" filterMatchMOde="contains">
+					<h:outputText value="#{vSales.nomorTelepon}" />
+				</p:column>
+				<p:ajax event="rowSelect" update=":mainForm:buttonPanel" />				
+			</p:dataTable>
+			<p:panel id="buttonPanel" styleClass="buttonPanel">
+				<p:commandButton id="tambah" value="Tambah" icon="fa fa-plus" action="tambah" update="mainForm" />
+				<p:commandButton id="edit" value="Edit" icon="fa fa-pencil" action="edit" update="mainForm" rendered="#{entityList.selected != null}"/>
+				<p:commandButton id="hapus" value="Hapus" icon="fa fa-eraser" action="hapus" update="mainForm" rendered="#{entityList.selected != null}">
+					<p:confirm header="Konfirmasi Hapus" message="Anda yakin ingin menghapus sales ini?" icon="ui-icon-alert"  />
+				</p:commandButton>
+				<p:commandButton id="tutup" value="Tutup" icon="fa fa-close" action="tutup" />
+			</p:panel>		
+		</p:panel>		
+	</ui:define>	
+</ui:composition>

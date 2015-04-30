@@ -1,0 +1,45 @@
+body {
+	font-family: arial, sans-serif;	
+}
+.main-panel {
+	border-width: 0px;	
+}
+.main-footer {
+	text-align: center;	
+	color: #888;
+	text-decoration: none;
+	font-size: small;	
+	font-family: arial, sans-serif;
+}
+.main-menu {
+	padding: 0px !important;
+}
+.main-menu > div.ui-widget-content {
+	background-color: #eee;	
+}
+.ui-menuitem-icon {
+	padding-right: 10px;
+}
+.icon-flip-horizontal {	
+	padding-right: 0px;
+	margin-right: 10px;
+	margine-left: -10px;	
+	transform: scale(-1,1);	
+}
+.entry > .ui-panelgrid-footer {
+	text-align: center !important;
+}
+.entry .ui-panelgrid-cell {
+	border-width: 0px !important;
+}
+.buttonPanel {
+	margin-top: 10px;
+	border-width: 0px !important;
+}
+.buttonPanel .ui-button {
+	margin-right: 10px;
+}
+.ui-message-error {
+	background-color: transparent !important;
+	border-width: 0px !important;
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+		<title>Basic Inventory Web Demo</title>
+		<h:outputStylesheet name="css/basic.css" />	
+		<h:outputScript name="js/locales.js" />	
+		<ui:insert name="headIncludes" />	
+	</h:head>
+	<h:body>
+		<p:layout fullPage="true" style="border: 0px;">
+			<p:layoutUnit position="west" resizable="true" collapsible="true" styleClass="main-menu">
+				<h:form>																				
+					<p:menu toggleable="true">
+						<p:submenu label="Transaksi">
+							<p:menuitem value="Pembelian" icon="fa fa-cube" />
+							<p:menuitem value="Penjualan" icon="fa fa-money" />							
+						</p:submenu>
+						<p:submenu label="Mutasi">
+							<p:menuitem value="Mutasi Masuk" icon="fa fa-truck" />
+							<p:menuitem value="Mutasi Keluar" icon="fa fa-truck icon-flip-horizontal" />
+						</p:submenu>
+						<p:submenu label="Retur">
+							<p:menuitem value="Retur Penjualan" icon="fa fa-mail-reply" />
+							<p:menuitem value="Retur Pembelian" icon="fa fa-mail-forward" />
+						</p:submenu>
+						<p:submenu label="Produk">
+							<p:menuitem value="Produk" icon="fa fa-pinterest" />
+							<p:menuitem value="Jenis Produk" icon="fa fa-pinterest-square" />
+						</p:submenu>											
+						<p:submenu label="Maintenance">
+							<p:menuitem value="Laporan" icon="fa fa-bar-chart" />
+							<p:menuitem value="Konsumen" icon="fa fa-users" url="/app/konsumen" />
+							<p:menuitem value="Sales" icon="fa fa-slideshare" url="/app/sales" />
+							<p:menuitem value="Supplier" icon="fa fa-truck" url="/app/supplier" />
+							<p:menuitem value="Cabang" icon="fa fa-university" url="/app/cabang" />
+							<p:menuitem value="Kota" icon="fa fa-globe" url="/app/kota" />							
+							<p:menuitem value="Backup" icon="fa fa-download"/>
+						</p:submenu>
+					</p:menu>								
+				</h:form>
+			</p:layoutUnit>
+			<p:layoutUnit position="center" styleClass="main-panel">
+				<h:form id="mainForm">
+					<ui:insert name="content" />
+				</h:form>
+			</p:layoutUnit>
+			<p:layoutUnit position="south" styleClass="main-panel">
+				<div class="main-footer">(c) 2015 by Jocki Hendry ~ Powered by Spring, PrimeFaces and open source libraries</div>
+			</p:layoutUnit>						
+		</p:layout>				
+	</h:body>
+</f:view>
+<p:ajaxStatus onerror="PF('dialogKesalahan').show();"/>													
+<p:dialog header="Terjadi Kesalahan" id="dialogKesalahan" widgetVar="dialogKesalahan" modal="true" resizable="false">	
+	<p>Telah terjadi kesalahan saat berkomunikasi dengan server.</p>
+	<p>Silahkan perbaharui halaman atau ulangi beberapa saat kemudian!</p>
+</p:dialog>
+<p:confirmDialog global="true" severity="alert" closeOnEscape="true">
+	<p:commandButton value="Iya" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+	<p:commandButton value="Tidak" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+</p:confirmDialog>
+</html>
