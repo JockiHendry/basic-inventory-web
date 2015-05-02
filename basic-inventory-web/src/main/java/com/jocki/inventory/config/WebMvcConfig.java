@@ -22,9 +22,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	private WebFlowConfig webFlowConfig;
 	
 	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/home").setViewName("home");
+	public void addViewControllers(ViewControllerRegistry registry) {		
 		registry.addViewController("/error").setViewName("error");
+		
 	}
 	
     @Bean

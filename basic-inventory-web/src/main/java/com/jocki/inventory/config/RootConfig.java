@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableJpaRepositories(basePackages="com.jocki.inventory.repository")
 @EnableTransactionManagement
-@ComponentScan(basePackages="com.jocki.inventory")
+@ComponentScan("com.jocki.inventory")
 public class RootConfig {
 
 	@Bean

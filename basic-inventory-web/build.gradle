@@ -7,7 +7,7 @@ version = '0.1'
 
 war {
 	archiveName = 'ROOT.war'
-	destinationDir = file('webapps')
+	destinationDir = file(System.env.OPENSHIFT_TARGET? System.env.OPENSHIFT_TARGET: 'webapps') 
 }
 
 repositories {
@@ -35,7 +35,7 @@ dependencies {
 	compile 'org.primefaces:primefaces:5.2'           
     
     // Lain-lainnya
-    providedCompile 'javax:javaee-web-api:7.0'
+    compile 'javax:javaee-web-api:7.0'
     compile 'joda-time:joda-time:2.7'
     compile 'joda-time:joda-time-hibernate:1.4'
     compile 'org.slf4j:slf4j-api:1.7.12'
