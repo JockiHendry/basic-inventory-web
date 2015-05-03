@@ -1,4 +1,4 @@
-package com.jocki.inventory.model;
+package com.jocki.inventory.view.model;
 
 import java.util.List;
 import java.util.Map;

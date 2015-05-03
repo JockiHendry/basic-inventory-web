@@ -1,4 +1,4 @@
-package com.jocki.inventory.model;
+package com.jocki.inventory.view.model;
 
 import javax.inject.Inject;
 

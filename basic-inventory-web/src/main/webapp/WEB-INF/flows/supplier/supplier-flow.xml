@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" parent="crud">
  
 	<view-state id="display">
-		<var name="entityList" class="com.jocki.inventory.model.SupplierLazyDataModel" />
+		<var name="entityList" class="com.jocki.inventory.view.model.SupplierLazyDataModel" />
 		<transition on="tambah" to="entry">			
 			<set name="flowScope.selectedEntity" value="new com.jocki.inventory.domain.Supplier()" />			
 		</transition>
