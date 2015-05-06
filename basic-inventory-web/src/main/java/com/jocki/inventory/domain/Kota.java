@@ -33,10 +33,8 @@ public class Kota extends DomainClass implements Comparable<Kota> {
     }
 
 	@Override
-	public int compareTo(Kota kotaLain) {
-		if (kotaLain == null) return -1;
-        if (!(kotaLain instanceof Kota)) return -1;
-        return getNama().compareToIgnoreCase(kotaLain.getNama());
+	public int compareTo(Kota kotaLain) {		
+        return (kotaLain == null)? -1: getNama().compareToIgnoreCase(kotaLain.getNama());
 	}
 
 	@Override

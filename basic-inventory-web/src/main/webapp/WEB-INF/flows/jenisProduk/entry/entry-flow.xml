@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" parent="crud/entry">
+        
+    <view-state id="entry">
+		<transition on="simpan">
+			<evaluate expression="jenisProdukAction.simpan(selectedEntity, flowRequestContext)" />
+		</transition>
+		<transition on="kembali" to="kembali" bind="false" validate="false" />
+		<transition on="update" to="updateAction" />
+	</view-state>		
+
+	<action-state id="updateAction">
+		<evaluate expression="jenisProdukAction.update(selectedEntity, flowRequestContext)" />		
+	</action-state>
+               	
+</flow>
