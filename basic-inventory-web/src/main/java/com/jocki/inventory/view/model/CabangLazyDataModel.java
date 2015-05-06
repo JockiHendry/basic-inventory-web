@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.Cabang;
 import com.jocki.inventory.repository.CabangRepository;
+import com.jocki.inventory.repository.FilterSpecification;
+import com.jocki.inventory.repository.FilterSpecification.Operation;
 
 public class CabangLazyDataModel extends PageableLazyDataModel<Cabang> {
 
@@ -16,11 +18,12 @@ public class CabangLazyDataModel extends PageableLazyDataModel<Cabang> {
 	private transient CabangRepository cabangRepository;	
 
 	@Override
-	public Page<Cabang> load(Pageable pageable) {		
+	public Page<Cabang> load(Pageable pageable) {	
+	    FilterSpecification<Cabang> filterSpecification = new FilterSpecification<>();
 		if (getFilter("nama") != null) {
-			return cabangRepository.findByNamaLike(getFilterAsSearchExpr("nama"), pageable);
+		    filterSpecification.and("nama", Operation.LIKE, getFilterAsSearchExpr("nama"));
 		} 
-		return cabangRepository.findAll(pageable);
+		return cabangRepository.findAll(filterSpecification, pageable);
 	}
 	
 }

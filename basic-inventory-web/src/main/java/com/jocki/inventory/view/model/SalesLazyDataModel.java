@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.Sales;
+import com.jocki.inventory.repository.FilterSpecification;
+import com.jocki.inventory.repository.FilterSpecification.Operation;
 import com.jocki.inventory.repository.SalesRepository;
 
 public class SalesLazyDataModel extends PageableLazyDataModel<Sales>{
@@ -16,17 +18,18 @@ public class SalesLazyDataModel extends PageableLazyDataModel<Sales>{
 	private transient SalesRepository salesRepository;
 	
 	@Override
-	public Page<Sales> load(Pageable pageable) {		
+	public Page<Sales> load(Pageable pageable) {
+	    FilterSpecification<Sales> filterSpecification = new FilterSpecification<>();
 		if (getFilter("nama") != null) {
-			return salesRepository.findByNamaLike(getFilterAsSearchExpr("nama"), pageable);
+		    filterSpecification.and("nama", Operation.LIKE, getFilterAsSearchExpr("nama"));
 		}
 		if (getFilter("alamat") != null) {
-			return salesRepository.findByAlamatLike(getFilterAsSearchExpr("alamat"), pageable);
+		    filterSpecification.and("alamat", Operation.LIKE, getFilterAsSearchExpr("alamat"));
 		}
 		if (getFilter("nomorTelepon") != null) {
-			return salesRepository.findByNomorTeleponLike(getFilterAsSearchExpr("nomorTelepon"), pageable);
+		    filterSpecification.and("nomorTelepon", Operation.LIKE, getFilterAsSearchExpr("nomorTelepon"));
 		}
-		return salesRepository.findAll(pageable);
+		return salesRepository.findAll(filterSpecification, pageable);
 	}
 
 }

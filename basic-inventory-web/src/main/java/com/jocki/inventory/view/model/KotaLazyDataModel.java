@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.Kota;
+import com.jocki.inventory.repository.FilterSpecification;
+import com.jocki.inventory.repository.FilterSpecification.Operation;
 import com.jocki.inventory.repository.KotaRepository;
 
 @Configurable
@@ -18,11 +20,12 @@ public class KotaLazyDataModel extends PageableLazyDataModel<Kota> {
 	private transient KotaRepository kotaRepository;	
 
 	@Override
-	public Page<Kota> load(Pageable pageable) {		
-		if (getFilter("nama") != null) {
-			return kotaRepository.findByNamaLike(getFilterAsSearchExpr("nama"), pageable);
+	public Page<Kota> load(Pageable pageable) {	
+	    FilterSpecification<Kota> filterSpecification = new FilterSpecification<>();
+		if (getFilter("nama") != null) {		    
+            filterSpecification.and("nama", Operation.LIKE, getFilterAsSearchExpr("nama"));	        
 		} 
-		return kotaRepository.findAll(pageable);
+		return kotaRepository.findAll(filterSpecification, pageable);
 	}
 	
 }

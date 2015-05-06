@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.JenisProduk;
+import com.jocki.inventory.repository.FilterSpecification;
+import com.jocki.inventory.repository.FilterSpecification.Operation;
 import com.jocki.inventory.repository.JenisProdukRepository;
 
 public class JenisProdukLazyDataModel extends PageableLazyDataModel<JenisProduk> {
@@ -17,13 +19,14 @@ public class JenisProdukLazyDataModel extends PageableLazyDataModel<JenisProduk>
 
 	@Override
 	public Page<JenisProduk> load(Pageable pageable) {
+	    FilterSpecification<JenisProduk> filterSpecification = new FilterSpecification<>();
 		if (getFilter("kode") != null) {
-			return jenisProdukRepository.findByKodeLike(getFilterAsSearchExpr("kode"), pageable);
+		    filterSpecification.and("kode", Operation.LIKE, getFilterAsSearchExpr("kode"));
 		}
 		if (getFilter("nama") != null) {
-			return jenisProdukRepository.findByNamaLike(getFilterAsSearchExpr("nama"), pageable);
+		    filterSpecification.and("nama", Operation.LIKE, getFilterAsSearchExpr("nama"));
 		}
-		return jenisProdukRepository.findAll(pageable);
+		return jenisProdukRepository.findAll(filterSpecification, pageable);
 	}
 			
 }
