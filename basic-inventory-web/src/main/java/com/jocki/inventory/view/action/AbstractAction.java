@@ -10,6 +10,8 @@ import org.springframework.webflow.execution.RequestContextHolder;
 
 public abstract class AbstractAction {
 	
+	public static final String FILTER_SEMUA = "(semua)";
+	
 	public void addInfoMessage(String message) {
 		FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sukses", message);		
 		FacesContext.getCurrentInstance().addMessage("pesanInformasi", facesMessage);

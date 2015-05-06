@@ -43,3 +43,6 @@ body {
 	background-color: transparent !important;
 	border-width: 0px !important;
 }
+.ui-column-filter {
+	width: 80% !important;
+}

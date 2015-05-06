@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
 import com.jocki.inventory.domain.DomainClass;
+import com.jocki.inventory.view.action.AbstractAction;
 
 public abstract class PageableLazyDataModel<T extends DomainClass> extends LazyDataModel<T> {
 
@@ -38,7 +39,7 @@ public abstract class PageableLazyDataModel<T extends DomainClass> extends LazyD
 	}
 	
 	public Object getFilter(String filterName) {
-		return (filters == null)? null: filters.get(filterName);
+		return ((filters == null) || (AbstractAction.FILTER_SEMUA.equals(filters.get(filterName))))? null: filters.get(filterName);
 	}
 	
 	public String getFilterAsSearchExpr(String filterName) {
