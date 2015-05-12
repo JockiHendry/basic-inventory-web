@@ -37,6 +37,9 @@ public class ItemStokLazyDataModel extends PageableLazyDataModel<ItemStok> {
     @Override
     public Page<ItemStok> load(Pageable pageable) {
         FilterSpecification<ItemStok> filterSpecification = new FilterSpecification<>();
+        if (currentProduk != null) {
+            filterSpecification.and("produk", Operation.EQ, currentProduk);
+        }
         filterSpecification.and("tanggalInput", tanggalMulai.toLocalDateTime(LocalTime.MIDNIGHT), tanggalSelesai.toLocalDateTime(LocalTime.MIDNIGHT));        
         if (getFilter("qty") != null) {
             filterSpecification.and("qty", Operation.MIN, (String) getFilter("qty")); 
@@ -46,7 +49,7 @@ public class ItemStokLazyDataModel extends PageableLazyDataModel<ItemStok> {
         }
         if (getFilter("keterangan") != null) {
             filterSpecification.and("keterangan", Operation.LIKE, getFilterAsSearchExpr("keterangan"));
-        }
+        }        
         return itemStokRepository.findAll(filterSpecification, pageable);        
     }
 
