@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.Sales;
-import com.jocki.inventory.repository.FilterSpecification;
-import com.jocki.inventory.repository.FilterSpecification.Operation;
+import com.jocki.inventory.repository.specification.FilterSpecification;
+import com.jocki.inventory.repository.specification.FilterSpecification.Operation;
 import com.jocki.inventory.repository.SalesRepository;
 
 public class SalesLazyDataModel extends PageableLazyDataModel<Sales>{

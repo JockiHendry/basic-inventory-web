@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.Produk;
-import com.jocki.inventory.repository.FilterSpecification;
-import com.jocki.inventory.repository.FilterSpecification.Operation;
+import com.jocki.inventory.repository.specification.FilterSpecification;
+import com.jocki.inventory.repository.specification.FilterSpecification.Operation;
 import com.jocki.inventory.repository.ProdukRepository;
 
 public class ProdukLazyDataModel extends PageableLazyDataModel<Produk> {
@@ -15,7 +15,7 @@ public class ProdukLazyDataModel extends PageableLazyDataModel<Produk> {
 	private static final long serialVersionUID = 1061514813307378318L;
 	
 	@Inject
-	private transient ProdukRepository produkRepository;
+	private transient ProdukRepository produkRepository;	
 
 	@Override
 	public Page<Produk> load(Pageable pageable) {
@@ -37,4 +37,5 @@ public class ProdukLazyDataModel extends PageableLazyDataModel<Produk> {
 		}
 		return produkRepository.findAll(filterSpecification, pageable);
 	}
+	
 }

@@ -23,6 +23,7 @@ PrimeFaces.locales['en_US'] = {
 	week: 'Minggu',
 	day: 'Hari',
 	allDayText: 'Semua Hari',
+	dateFormat: 'dd-mm-yy',
 	messages: {
 		"javax.faces.component.UIInput.REQUIRED" : "{0}: Kesalahan Validasi: Harus diisi.",
 		"javax.faces.converter.IntegerConverter.INTEGER" : "{2}: '{0}' harus sebuah angka yang terdiri atas satu atau lebih digit.",

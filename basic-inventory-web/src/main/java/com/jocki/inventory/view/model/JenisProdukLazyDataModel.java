@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.JenisProduk;
-import com.jocki.inventory.repository.FilterSpecification;
-import com.jocki.inventory.repository.FilterSpecification.Operation;
+import com.jocki.inventory.repository.specification.FilterSpecification;
+import com.jocki.inventory.repository.specification.FilterSpecification.Operation;
 import com.jocki.inventory.repository.JenisProdukRepository;
 
 public class JenisProdukLazyDataModel extends PageableLazyDataModel<JenisProduk> {

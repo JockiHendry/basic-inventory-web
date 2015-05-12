@@ -29,6 +29,7 @@ dependencies {
     compile 'org.hibernate:hibernate-entitymanager:4.3.9.Final'
     compile 'org.hibernate:hibernate-validator:5.1.3.Final'
     compile 'mysql:mysql-connector-java:5.1.35'
+    compile 'org.jadira.usertype:usertype.jodatime:2.0.1'
     
 	// JSF
 	compile 'org.glassfish:javax.faces:2.2.10'

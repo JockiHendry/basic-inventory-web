@@ -31,6 +31,7 @@
 				<p:commandButton id="hapus" value="Hapus" icon="fa fa-eraser" action="hapus" update="mainForm" rendered="#{entityList.selected != null}">
 					<p:confirm header="Konfirmasi Hapus" message="Anda yakin ingin menghapus jenis produk ini?" icon="ui-icon-alert"  />
 				</p:commandButton>
+				<p:commandButton id="lihatItemStok" value="Lihat Item Stok" icon="fa fa-book" action="lihatItemStok" update="mainForm" rendered="#{entityList.selected != null}"/>
 				<p:commandButton id="tutup" value="Tutup" icon="fa fa-close" action="tutup" />
 			</p:panel>		
 		</p:panel>		

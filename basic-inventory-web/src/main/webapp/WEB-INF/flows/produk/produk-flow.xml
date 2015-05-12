@@ -14,9 +14,20 @@
 		</transition>
 		<transition on="hapus">
 			<evaluate expression="produkAction.hapus(entityList.selected, flowRequestContext)" />
+		</transition>
+		<transition on="lihatItemStok" to="itemStok">		  
+		  <set name="flowScope.selectedEntity" value="entityList.selected" />          
 		</transition>							
 	</view-state>								
 	
-	<subflow-state id="entry" subflow="produk/entry" />				
+	<subflow-state id="entry" subflow="produk/entry" />
+	
+	<subflow-state id="itemStok" subflow="produk/itemStok">
+	   <input name="mode" value="'embedded'" />
+	   <input name="selectedEntity" value="selectedEntity" />
+	   <transition on="kembali" to="display">
+            <render fragments="mainForm" />
+          </transition>
+	</subflow-state>				
 	
 </flow>

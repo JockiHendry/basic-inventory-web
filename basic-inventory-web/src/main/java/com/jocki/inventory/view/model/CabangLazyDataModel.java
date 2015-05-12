@@ -7,8 +7,8 @@ import org.springframework.data.domain.Pageable;
 
 import com.jocki.inventory.domain.Cabang;
 import com.jocki.inventory.repository.CabangRepository;
-import com.jocki.inventory.repository.FilterSpecification;
-import com.jocki.inventory.repository.FilterSpecification.Operation;
+import com.jocki.inventory.repository.specification.FilterSpecification;
+import com.jocki.inventory.repository.specification.FilterSpecification.Operation;
 
 public class CabangLazyDataModel extends PageableLazyDataModel<Cabang> {
 
